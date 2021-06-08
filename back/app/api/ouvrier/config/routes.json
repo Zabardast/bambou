@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ouvriers",
+      "handler": "ouvrier.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ouvriers/count",
+      "handler": "ouvrier.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ouvriers/:id",
+      "handler": "ouvrier.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ouvriers",
+      "handler": "ouvrier.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ouvriers/:id",
+      "handler": "ouvrier.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ouvriers/:id",
+      "handler": "ouvrier.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

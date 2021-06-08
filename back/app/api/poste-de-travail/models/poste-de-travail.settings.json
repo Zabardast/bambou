@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "poste_de_travails",
+  "info": {
+    "name": "poste_de_travail"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "competence": {
+      "model": "competence"
+    },
+    "machines": {
+      "collection": "machine"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

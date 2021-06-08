@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "operations",
+  "info": {
+    "name": "operation",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ouvrier": {
+      "model": "ouvrier"
+    },
+    "machine": {
+      "model": "machine"
+    },
+    "poste_de_travail": {
+      "model": "poste-de-travail"
+    },
+    "nom": {
+      "type": "string"
+    }
+  }
+}

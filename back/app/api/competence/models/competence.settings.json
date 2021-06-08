@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "competences",
+  "info": {
+    "name": "competence"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ouvriers",
+  "info": {
+    "name": "ouvrier",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "admin_user": {
+      "plugin": "admin",
+      "model": "user"
+    },
+    "competences": {
+      "collection": "competence"
+    }
+  }
+}

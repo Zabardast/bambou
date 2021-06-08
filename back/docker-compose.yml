@@ -1,0 +1,42 @@
+version: "3"
+services:
+    bambou_db:
+        image: postgres
+        container_name: bambou_db
+        env_file: .env
+        volumes:
+            - ./data:/var/lib/postgresql/data
+        ports: 
+            - "5432:5432"
+        environment: 
+            - POSTGRES_USER=${DATABASE_USERNAME}
+            - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+            - POSTGRES_DB=${DATABASE_NAME}
+        networks: 
+            - bambou_net
+
+    bambou:
+        image: strapi/strapi
+        container_name: bambou
+        volumes:
+            - ./app:/srv/app
+        env_file: .env
+        depends_on:
+            - bambou_db
+        ports: 
+            - "1337:1337"
+        environment: 
+            - DATABASE_CLIENT=postgres
+            - DATABASE_HOST=bambou_db
+            - DATABASE_PORT=5432
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_USERNAME=${DATABASE_USERNAME}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+            - DATABASE_SSL=false
+        networks: 
+            - bambou_net
+
+
+networks:
+  bambou_net:
+    driver: bridge
