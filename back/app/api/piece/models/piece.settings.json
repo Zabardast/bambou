@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "machines",
+  "collectionName": "pieces",
   "info": {
-    "name": "machine",
+    "name": "piece",
     "description": ""
   },
   "options": {
@@ -12,15 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nom": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "occuper": {
-      "type": "boolean",
-      "default": false,
-      "required": true
+    "realisations": {
+      "collection": "realisation"
     }
   }
 }

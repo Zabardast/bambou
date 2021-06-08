@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "name": "client"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "entreprise": {
+      "type": "string"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "portable": {
+      "type": "integer"
+    }
+  }
+}

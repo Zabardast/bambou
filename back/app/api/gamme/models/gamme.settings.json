@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "ouvriers",
+  "collectionName": "gammes",
   "info": {
-    "name": "ouvrier",
+    "name": "gamme",
     "description": ""
   },
   "options": {
@@ -12,9 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "poste_de_travails": {
-      "via": "ouvriers",
-      "collection": "poste-de-travail"
+    "operations": {
+      "collection": "operation"
+    },
+    "piece": {
+      "model": "piece"
     }
   }
 }

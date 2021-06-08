@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "machines",
+  "collectionName": "commands",
   "info": {
-    "name": "machine",
+    "name": "command",
     "description": ""
   },
   "options": {
@@ -12,12 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nom": {
+    "lignes": {
+      "collection": "ligne"
+    },
+    "client": {
+      "model": "client"
+    },
+    "date_de_livraison": {
+      "type": "datetime"
+    },
+    "date_de_livraison_reel": {
+      "type": "datetime"
+    },
+    "reference": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "occuper": {
+    "livree": {
       "type": "boolean",
       "default": false,
       "required": true

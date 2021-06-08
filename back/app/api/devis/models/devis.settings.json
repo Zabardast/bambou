@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devis",
+  "info": {
+    "name": "devis",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lignes": {
+      "collection": "ligne"
+    },
+    "delai": {
+      "type": "datetime",
+      "required": true
+    },
+    "client": {
+      "model": "client"
+    },
+    "reference": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

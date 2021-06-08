@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "operations",
+  "collectionName": "operation_realises",
   "info": {
-    "name": "operation",
-    "description": ""
+    "name": "operation_realise"
   },
   "options": {
     "increments": true,
@@ -18,10 +17,16 @@
     "poste_de_travail": {
       "model": "poste-de-travail"
     },
+    "ouvrier": {
+      "model": "ouvrier"
+    },
+    "fini": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
     "time": {
-      "type": "time",
-      "required": true,
-      "default": "00:00:00"
+      "type": "time"
     }
   }
 }

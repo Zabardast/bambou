@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/lignes",
+      "handler": "ligne.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lignes/count",
+      "handler": "ligne.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/lignes/:id",
+      "handler": "ligne.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/lignes",
+      "handler": "ligne.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/lignes/:id",
+      "handler": "ligne.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/lignes/:id",
+      "handler": "ligne.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

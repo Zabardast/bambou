@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "machines",
+  "collectionName": "lignes",
   "info": {
-    "name": "machine",
-    "description": ""
+    "name": "ligne"
   },
   "options": {
     "increments": true,
@@ -12,14 +11,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nom": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "piece": {
+      "model": "piece"
     },
-    "occuper": {
-      "type": "boolean",
-      "default": false,
+    "quantite": {
+      "type": "integer",
+      "min": 1,
+      "required": true,
+      "default": 1
+    },
+    "prix": {
+      "type": "decimal",
+      "min": 0,
       "required": true
     }
   }
