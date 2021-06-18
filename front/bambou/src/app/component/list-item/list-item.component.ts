@@ -9,11 +9,19 @@ import { UserModel } from 'src/app/model/user.model';
 export class ListItemComponent implements OnInit {
 
   @Input()
-  userItem?: UserModel;
+  userItem: UserModel = new UserModel();
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log("userItem", this.userItem);
   }
 
+  Items(): UserModel {
+    return (this.userItem == null) ? new UserModel() : this.userItem;
+  }
+
+  details(id: number): void {
+
+  }
 }

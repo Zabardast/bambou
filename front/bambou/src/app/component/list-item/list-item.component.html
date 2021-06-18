@@ -1,5 +1,13 @@
-<div id="list_item">
-    <p>name</p>
-    <button class="li_btn" nz-button nzType="primary">edit</button>
-    <button class="li_btn" nz-button nzType="primary">delete</button>
+<div class="list_item_container">
+    <div class="list_item">
+        <p class="p_item">{{userItem.username}}</p>
+        <p class="p_item">{{userItem.email}}</p>
+        <p></p>
+        <div class="action_strip">
+            <button nz-button class="details_btn" nzType="default" (click)="details(userItem.id)">
+                details <span class="material-icons">visibility</span>
+            </button>
+            <span class="material-icons more_btn" >more_horiz</span>
+        </div>
+    </div>
 </div>

@@ -5,16 +5,8 @@
             <button nz-button class="addUserBtn" nzType="default" (click)="addUser()">Nouveau</button>
         </div>
         <div id="user_container">
-            <div class="list_item" *ngFor="let item of Users()">
-                <p class="p_item">{{item.username}}</p>
-                <p class="p_item">{{item.email}}</p>
-                <p></p>
-                <div class="action_strip">
-                    <button nz-button class="details_btn" nzType="default" (click)="details(item.id)">
-                        details <span class="material-icons">visibility</span>
-                    </button>
-                    <span class="material-icons more_btn" >more_horiz</span>
-                </div>
+            <div class="lst" *ngFor="let item of Users()">
+                <app-list-item [userItem]="item" ></app-list-item>
             </div>
         </div>
     </div>

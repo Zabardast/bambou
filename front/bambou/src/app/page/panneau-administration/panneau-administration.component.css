@@ -22,11 +22,11 @@ p {
 }
 
 #user_container {
+    width: 100%;
     padding-top: 10px;
-    display: flex;
-    justify-content: space-around;
 }
 
+/* 
 .list_item {
     background-color: #C4C4C4;
     width: 90%;
@@ -40,12 +40,10 @@ p {
 
 .p_item {
     padding-left: 15px;
-    /* display: flex; */
     text-align: center;
 }
 
 .action_strip {
-    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,4 +59,4 @@ p {
 
 .more_btn {
 
-}
+} */
