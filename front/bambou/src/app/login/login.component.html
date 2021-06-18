@@ -1,0 +1,22 @@
+<div id="main">
+    <div id="login_card">
+        <p id="logo">Bambou</p>
+        <form nz-form id="form">
+            <nz-form-item>
+                <nz-form-control>
+                    <input nz-input name="email" placeholder="name@email.du" type="email" id="email" [(ngModel)]="email">
+                </nz-form-control>
+            </nz-form-item >
+            <nz-form-item>
+                <nz-form-control>
+                    <input nz-input name="password" placeholder="password" type="password" id="password" [(ngModel)]="password">
+                </nz-form-control>
+            </nz-form-item >
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button nzType="default" (click)="submitForm()">Let's Go !</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+header {
+    width: 100%;
+    background-color: #75827B;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+}
+
+img {
+    border-radius: 50%;
+    height: 80px;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+#logo_container {
+    text-align: center;
+}
+
+#logo {
+    width: 70%;
+    min-width: 250px;
+    height: 70%;
+    background-color: #419E14;
+}
+
+#logo_txt {
+    color: white;
+    margin: 10px;
+    padding-top: 10px;
+    font-size: 48px;
+    font-family: 'Ravi Prakash', cursive;
+}
+
+#main_container {
+    color: white;
+}
+
+#page_title {
+    text-align: center;
+    font-size: 48px;
+}
+
+.sub_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub_menu_item {
+    display: inline-block;
+    min-width: 10%;
+}
+
+.sub_menu_item:hover {
+    background-color: #535F58;
+}
+
+#user_container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-top: 10px;
+    margin-right: 20px;
+    align-items: center;
+}
