@@ -12,6 +12,8 @@ export class PanneauAdministrationComponent implements OnInit {
   
   grp: string="admin";
   user: UserModel = new UserModel();
+  visible: boolean = false;
+
   constructor(public readonly user_service: UserService) { 
     //to remove
     // this.user.img = "https://lh3.googleusercontent.com/a-/AOh14GjuO9PpmvuQTz-8Hm2azV3fSQbbZrflj9qXbH4p3VU=s96-c"
@@ -25,8 +27,19 @@ export class PanneauAdministrationComponent implements OnInit {
     this.user_service.getUsers();
   }
 
-  addUser(): void {
+  openaddUser(): void {
+    this.visible = true;
+  }
 
+  addUser():void {
+    if (this.user.username == '' || this.user.email == '' || this.user.password == '') {
+      this.visible = false; //to remove
+      //display error
+      return;
+    }
+    this.user_service.createUser(this.user)
+    //add popup if user added
+    this.visible = false;
   }
 
 }

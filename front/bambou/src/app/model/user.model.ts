@@ -8,6 +8,7 @@ export class RoleModel {
 export class UserModel {
     id = 0;
     username = '';
+    password = '';
     email = '';
     img = '';
     role!: RoleModel;

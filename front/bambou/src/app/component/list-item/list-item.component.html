@@ -31,6 +31,6 @@
 <ng-template #editpopover>
     <input nz-input placeholder="username" [(ngModel)]="userItem.username" />
     <input nz-input placeholder="email" [(ngModel)]="userItem.email" />
-    <input nz-input placeholder="password" [(ngModel)]="password" [disabled]="true"  />
+    <input nz-input placeholder="password" [(ngModel)]="userItem.password" />
     <button class="user_edit" (click)="updateUser(userItem)"> modifier </button>
 </ng-template>

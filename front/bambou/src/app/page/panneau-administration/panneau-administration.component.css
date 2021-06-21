@@ -26,6 +26,22 @@ p {
     padding-top: 10px;
 }
 
+.addcontainer {
+    width: 90%;
+    align-items: center;
+
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
+}
+
+.addcontainerparent {
+    display: flex;
+    justify-content: center;
+}
+
+.addinput {
+    width: 90%;
+}
 /* 
 .list_item {
     background-color: #C4C4C4;

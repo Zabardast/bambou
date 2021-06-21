@@ -12,8 +12,6 @@ export class ListItemComponent implements OnInit {
   @Input()
   userItem: UserModel = new UserModel();
 
-  password: string ="";
-
   visible: boolean = false;
 
   constructor(public readonly user_service: UserService) { }
@@ -40,10 +38,6 @@ export class ListItemComponent implements OnInit {
     console.log("delete");
     this.user_service.deleteUser(id);
   }
-
-  // closePopup(): void {
-  //   this.visible = false
-  // }
 
   //to remove
   change(value: boolean): void {

@@ -2,10 +2,18 @@
 <body>
     <div class="main_container">
         <div id="add_container">
-            <button nz-button class="addUserBtn" nzType="default" (click)="addUser()">Nouveau</button>
+            <button *ngIf="!visible" nz-button class="addUserBtn" nzType="default" (click)="openaddUser()">Nouveau</button>
         </div>
-        <div id="user_container">
-            <div class="lst" *ngFor="let item of user_service.users">
+        <div class="addcontainerparent" *ngIf="visible">
+            <div class="addcontainer">
+                <input class="addinput" nz-input placeholder="username" [(ngModel)]="user.username" />
+                <input class="addinput" nz-input placeholder="email" [(ngModel)]="user.email" />
+                <input class="addinput" nz-input placeholder="password" [(ngModel)]="user.password" />
+                <button nz-button class="addUserBtn" nzType="default" (click)="addUser()">save</button>
+            </div>
+        </div>
+        <div class="lst" *ngFor="let item of user_service.users">
+            <div id="user_container">
                 <app-list-item [userItem]="item" ></app-list-item>
             </div>
         </div>

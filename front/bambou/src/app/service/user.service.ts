@@ -15,7 +15,9 @@ export class UserService {
   constructor(private readonly http: HttpClient) { }
 
   createUser(user: UserModel) {
-    this.http.post(`${environment.baseUrl}/users`,user);
+    this.http.post(`${environment.baseUrl}/users`,user).subscribe((res)=>{
+      this.getUsers();
+    });
   }
 
   readUser(id: number) {
