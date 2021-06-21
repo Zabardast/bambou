@@ -7,7 +7,30 @@
             <button nz-button class="details_btn" nzType="default" (click)="details(userItem.id)">
                 details <span class="material-icons">visibility</span>
             </button>
-            <span class="material-icons more_btn" >more_horiz</span>
+            <a nz-dropdown [nzDropdownMenu]="menu">
+                <span class="material-icons more_btn" >more_horiz</span>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu nzSelectable>
+                    <li nz-menu-item>
+                        <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
+                        nzPopoverPlacement="topRight" nzPopoverTrigger="click">
+                            <span class="material-icons more_btn" >mode</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item>
+                        <a (click)="deleteUser(userItem.id)">
+                            <span class="material-icons more_btn" >person_remove</span>
+                        </a>
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
         </div>
     </div>
 </div>
+<ng-template #editpopover>
+    <input nz-input placeholder="username" [(ngModel)]="userItem.username" />
+    <input nz-input placeholder="email" [(ngModel)]="userItem.email" />
+    <input nz-input placeholder="password" [(ngModel)]="password" [disabled]="true"  />
+    <button class="user_edit" (click)="updateUser(userItem)"> modifier </button>
+</ng-template>

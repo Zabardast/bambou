@@ -5,7 +5,7 @@
             <button nz-button class="addUserBtn" nzType="default" (click)="addUser()">Nouveau</button>
         </div>
         <div id="user_container">
-            <div class="lst" *ngFor="let item of Users()">
+            <div class="lst" *ngFor="let item of user_service.users">
                 <app-list-item [userItem]="item" ></app-list-item>
             </div>
         </div>

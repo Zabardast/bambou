@@ -15,6 +15,8 @@ import fr from '@angular/common/locales/fr';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { AuthInterceptor } from 'src/app/auth.interceptor';
 import { ListItemComponent } from './component/list-item/list-item.component';
 import { HeaderTemplateComponent } from './component/header-template/header-template.component';
@@ -38,9 +40,11 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzFormModule,
     NzInputModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDropDownModule,
+    NzPopoverModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true, useValue: en_US }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

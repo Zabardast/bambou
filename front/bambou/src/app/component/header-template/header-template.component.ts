@@ -33,7 +33,7 @@ export class HeaderTemplateComponent implements OnInit {
   }
 
   determineMenu(): menuItem[] {
-    if (this.user.role.id == 3) {
+    if (this.user?.role?.id == 3) {
       return this.menuAdmin;
     }
     return this.menuWorkshop;
