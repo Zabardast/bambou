@@ -25,6 +25,7 @@ export class PanneauAdministrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.user_service.getUsers();
+    this.user_service.getcurentUser();
   }
 
   openaddUser(): void {

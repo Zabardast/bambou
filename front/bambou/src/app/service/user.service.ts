@@ -11,6 +11,7 @@ export class UserService {
 
   users: UserModel[] = [];
   user: UserModel = new UserModel();
+  current_user: UserModel = new UserModel();
 
   constructor(private readonly http: HttpClient) { }
 
@@ -42,5 +43,12 @@ export class UserService {
     this.http.delete(`${environment.baseUrl}/users/${id}`).subscribe(() => {
       this.getUsers();
     });
+  }
+
+  getcurentUser() {
+    this.http.get<UserModel>(`${environment.baseUrl}/users/me`).subscribe((res)=> {
+      console.log("getcurent user: ",res);
+      this.current_user =  res;
+    })
   }
 }

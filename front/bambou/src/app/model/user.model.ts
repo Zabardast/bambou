@@ -10,6 +10,6 @@ export class UserModel {
     username = '';
     password = '';
     email = '';
-    img = '';
+    image = '';
     role!: RoleModel;
   }
