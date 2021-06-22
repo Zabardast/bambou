@@ -1,3 +1,5 @@
+import { poste_de_travail_Model } from "./poste-de-travail.model";
+
 export class RoleModel {
   id = 0;
   name = '';
@@ -12,4 +14,5 @@ export class UserModel {
     email = '';
     image = '';
     role!: RoleModel;
+    poste_de_travails :poste_de_travail_Model[] = [];
   }

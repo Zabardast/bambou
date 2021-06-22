@@ -14,6 +14,9 @@ export type menuItem = {
 })
 export class HeaderTemplateComponent implements OnInit {
 
+  //page title
+  page_title: string='';
+
   /* Clem */
   menuAdmin: menuItem[] = []
   menuCommerce: menuItem[] = [{path: '/dashboard', label: 'dashboard'}, {path: '/pwet', label: 'pwet'}]

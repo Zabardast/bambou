@@ -1,10 +1,8 @@
-<div class="list_item_container">
-    <div class="list_item">
-        <p class="p_item">{{userItem.username}}</p>
-        <p class="p_item">{{userItem.email}}</p>
-        <p class="p_item">{{userItem.role.type}}</p>
+<div class="mch">
+    <div class="tem">
+        <p>{{poste_det_travail.name}}</p>
         <div class="action_strip">
-            <button nz-button class="details_btn" nzType="default" (click)="details(userItem.id)">
+            <button nz-button class="details_btn" nzType="default" (click)="details(poste_det_travail.id)">
                 details <span class="material-icons">visibility</span>
             </button>
             <a nz-dropdown [nzDropdownMenu]="menu">
@@ -19,7 +17,7 @@
                         </a>
                     </li>
                     <li nz-menu-item>
-                        <a (click)="deleteUser(userItem.id)">
+                        <a (click)="delete_poste_de_travail(poste_det_travail.id)">
                             <span class="material-icons more_btn" >person_remove</span>
                         </a>
                     </li>
@@ -29,8 +27,6 @@
     </div>
 </div>
 <ng-template #editpopover>
-    <input nz-input placeholder="username" [(ngModel)]="userItem.username" />
-    <input nz-input placeholder="email" [(ngModel)]="userItem.email" />
-    <input nz-input placeholder="password" [(ngModel)]="userItem.password" />
-    <button class="user_edit" (click)="updateUser(userItem)"> modifier </button>
+    <input nz-input placeholder="machine name" [(ngModel)]="poste_det_travail.name" />
+    <button class="user_edit" (click)="update_poste_de_travail(poste_det_travail)"> modifier </button>
 </ng-template>

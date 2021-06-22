@@ -21,6 +21,11 @@ import { AuthInterceptor } from 'src/app/auth.interceptor';
 import { ListItemComponent } from './component/list-item/list-item.component';
 import { HeaderTemplateComponent } from './component/header-template/header-template.component';
 import { PanneauAdministrationComponent } from './page/panneau-administration/panneau-administration.component';
+import { RealisationComponent } from './page/realisation/realisation.component';
+import { GammeComponent } from './page/gamme/gamme.component';
+import { AtelierComponent } from './page/atelier/atelier.component';
+import { MachineListItemComponent } from './component/machine-list-item/machine-list-item.component';
+import { PosteDeTravailListItemComponent } from './component/poste-de-travail-list-item/poste-de-travail-list-item.component';
 
 registerLocaleData(en);
 
@@ -30,7 +35,12 @@ registerLocaleData(en);
     LoginComponent,
     ListItemComponent,
     HeaderTemplateComponent,
-    PanneauAdministrationComponent
+    PanneauAdministrationComponent,
+    RealisationComponent,
+    GammeComponent,
+    AtelierComponent,
+    MachineListItemComponent,
+    PosteDeTravailListItemComponent
   ],
   imports: [
     BrowserModule,

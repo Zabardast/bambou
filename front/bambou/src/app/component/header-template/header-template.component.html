@@ -5,7 +5,7 @@
         </div>
     </div>
     <div id="main_container">
-        <p id="page_title">{{user.role.type}}</p>
+        <p id="page_title">{{pg_grp}}</p>
         <div id="sub_menu">
             <p class="sub_menu_item" *ngFor="let menuItem of determineMenu()" (click)="router.navigate([menuItem.path])">
                 {{menuItem.label}}
