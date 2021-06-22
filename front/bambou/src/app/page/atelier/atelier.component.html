@@ -1,17 +1,18 @@
 <app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
-<body>
+<main>
     <div class="poste_de_travail">
         <div class="top_container">
             <div class="tc">
                 <p id="tc_p">Poste de travail</p>
                 <button id="tc_b" *ngIf="!visible_pdt" nz-button nzType="default" (click)="open_add_poste_de_travail()">ajouter</button>
+                <button nz-button *ngIf="visible_pdt"class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button>
             </div>
         </div>    
     </div>
     <div class="addcontainerparent" *ngIf="visible_pdt">
         <div class="addcontainer">
             <input class="addinput" nz-input placeholder="nom poste de travail" [(ngModel)]="poste_de_travail.name" />
-            <button nz-button class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button>
+            <!-- <button nz-button class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button> -->
         </div>
     </div>
     <div *ngFor="let poste_de_travail of poste_de_travail_service.poste_de_travails">
@@ -23,7 +24,7 @@
                 <p id="tc_p">machine</p>
                 <button id="tc_b" *ngIf="!visible_machine" nz-button nzType="default" (click)="open_add_machine()">ajouter</button>
             </div>
-        </div>    
+        </div> 
     </div>
     <div class="addcontainerparent" *ngIf="visible_machine">
         <div class="addcontainer">
@@ -31,7 +32,10 @@
             <button nz-button class="addUserBtn" nzType="default" (click)="add_machine()">save</button>
         </div>
     </div>
-    <div *ngFor="let machine of machine_service.machines">
-        <app-machine-list-item [machine]="machine"></app-machine-list-item>
+    <div class="machine_mod">
+        <div [ngClass]="visible_pdt ? 'machine_lst' : ''" class="const_machine_lst"  *ngFor="let machine of machine_service.machines">
+            <app-machine-list-item [machine]="machine"></app-machine-list-item>
+            <label *ngIf="visible_pdt" nz-checkbox [(ngModel)]="machine.checked"></label>
+        </div>
     </div>
-</body>
+<main>

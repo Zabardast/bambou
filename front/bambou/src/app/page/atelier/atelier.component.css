@@ -5,7 +5,7 @@
 }
 
 .tc {
-    width: 80%;
+    width: 100%;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -28,9 +28,8 @@
 }
 
 .addcontainer {
-    width: 80%;
-    align-items: center;
-
+    width: 100%;
+    align-items: flex-end;
     display: flex;
     justify-content: flex-end;
 }
@@ -43,4 +42,33 @@
 .addUserBtn {
     background-color: #FCD60E;
     border-radius: 5px;
+}
+
+.machine_mod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.machine_lst{
+    display: grid;
+    grid-template-columns: 95% 5%;
+}
+
+.const_machine_lst {
+    width: 100%;
+}
+
+main {
+    padding: 30px 10%;
+}
+app-machine-list-item {
+    width: 100%;
+    margin: 7px 0;
+}
+
+.ant-checkbox-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
