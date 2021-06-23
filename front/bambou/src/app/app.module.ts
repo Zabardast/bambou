@@ -18,6 +18,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { AuthInterceptor } from 'src/app/auth.interceptor';
 import { ListItemComponent } from './component/list-item/list-item.component';
 import { HeaderTemplateComponent } from './component/header-template/header-template.component';
@@ -58,7 +59,8 @@ registerLocaleData(en);
     NzButtonModule,
     NzDropDownModule,
     NzPopoverModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzTimePickerModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

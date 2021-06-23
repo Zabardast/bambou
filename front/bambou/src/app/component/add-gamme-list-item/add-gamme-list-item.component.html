@@ -1,7 +1,7 @@
 <div class="top">
-    <button id="tc_b" nz-button nzType="default" (click)="save()">annuler</button>
+    <button id="tc_b" nz-button nzType="default" (click)="quit()">annuler</button>
     <input class="name_input" nz-input placeholder="name" [(ngModel)]="name" />
-    <button id="tc_b" nz-button nzType="default" (click)="save()">ajouter</button>
+    <button id="tc_b" nz-button nzType="default" (click)="save()">enregistrer</button>
 </div>
 <div class="bottom">
     <div class="loop_man" *ngFor="let operation of service_operation.operations">
@@ -11,5 +11,29 @@
             <p>{{operation.machine.nom}}</p>
         </div>
         <label nz-checkbox [(ngModel)]="operation.checked"></label>
+    </div>
+</div>
+<div class="add_bottom">
+    <button id="tc_b" nz-button nzType="default" (click)="add_op()">ajouter operation</button>
+</div>
+<div class="addForm">
+    <div class="loc_op">
+        <input class="loc_op_item" nz-input placeholder="name" [(ngModel)]="op_name"/>
+        <nz-time-picker class="loc_op_item" [(ngModel)]="op_time" nzFormat="HH:mm" nzSize="small"></nz-time-picker>
+    </div>
+    <div class="loc_dw">
+        <!-- deux liste avec pdt et machine pour la creation d'operation -->
+        <div  class="pdt_lst">
+            <div class="pdt_lst_item" *ngFor="let pdt of service_pdt.poste_de_travails">
+                <app-poste-de-travail-list-item [poste_det_travail]="pdt"></app-poste-de-travail-list-item>
+                <label nz-checkbox [(ngModel)]="pdt.checked"></label>
+            </div>
+        </div>
+        <div class="machine_lst">
+            <div class="machine_lst_item" *ngFor="let machine of service_machine.machines">
+                <app-machine-list-item [machine]="machine"></app-machine-list-item>
+                <label nz-checkbox [(ngModel)]="machine.checked"></label>
+            </div>
+        </div>
     </div>
 </div>

@@ -42,6 +42,12 @@ export class AtelierComponent implements OnInit {
       //display error
       return;
     }
+    this.machine_service.machines.forEach(machine => {
+      if(machine.checked) {
+        this.poste_de_travail.machines.push(machine);
+        machine.checked = false;
+      }      
+    });
     this.poste_de_travail_service.creat_poste_de_travail(this.poste_de_travail);
     this.visible_pdt = false; 
   }
