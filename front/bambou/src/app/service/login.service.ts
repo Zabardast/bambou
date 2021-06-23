@@ -34,7 +34,9 @@ export class LoginService {
           console.log("nav to admin");
           this.router.navigate(['/admin'])
           break;
-      
+        case "atelier":
+          this.router.navigate(['/atelier'])
+          break;
         default:
           break;
       }

@@ -1,0 +1,40 @@
+.top {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    margin-bottom: 20px;
+}
+
+.name_input {
+    width: 90%;
+    border-radius: 10px;
+    margin: 0px 5%;
+}
+
+#tc_b {
+    background-color: #FCD60E;
+}
+
+.bottom{
+
+}
+
+.loop_man{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    margin-bottom: 10px;
+}
+
+.operation_item{
+    background-color: #C4C4C4;
+    border-radius: 10px;
+    padding: 2px;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.ant-checkbox-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}

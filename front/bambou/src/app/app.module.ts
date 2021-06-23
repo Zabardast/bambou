@@ -27,6 +27,8 @@ import { GammeComponent } from './page/gamme/gamme.component';
 import { AtelierComponent } from './page/atelier/atelier.component';
 import { MachineListItemComponent } from './component/machine-list-item/machine-list-item.component';
 import { PosteDeTravailListItemComponent } from './component/poste-de-travail-list-item/poste-de-travail-list-item.component';
+import { GammeListItemComponent } from './component/gamme-list-item/gamme-list-item.component';
+import { AddGammeListItemComponent } from './component/add-gamme-list-item/add-gamme-list-item.component';
 
 registerLocaleData(en);
 
@@ -41,7 +43,9 @@ registerLocaleData(en);
     GammeComponent,
     AtelierComponent,
     MachineListItemComponent,
-    PosteDeTravailListItemComponent
+    PosteDeTravailListItemComponent,
+    GammeListItemComponent,
+    AddGammeListItemComponent
   ],
   imports: [
     BrowserModule,

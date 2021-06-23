@@ -1,0 +1,15 @@
+<div class="top">
+    <button id="tc_b" nz-button nzType="default" (click)="save()">annuler</button>
+    <input class="name_input" nz-input placeholder="name" [(ngModel)]="name" />
+    <button id="tc_b" nz-button nzType="default" (click)="save()">ajouter</button>
+</div>
+<div class="bottom">
+    <div class="loop_man" *ngFor="let operation of service_operation.operations">
+        <div class="operation_item">
+            <p>{{operation.name}}</p>
+            <p>{{operation.poste_de_travail.name}}</p>
+            <p>{{operation.machine.nom}}</p>
+        </div>
+        <label nz-checkbox [(ngModel)]="operation.checked"></label>
+    </div>
+</div>

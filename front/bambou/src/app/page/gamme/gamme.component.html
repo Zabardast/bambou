@@ -1,10 +1,16 @@
 <app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
 <body>
-    <div class="top_container">
-        <div class="tc">
-            <p id="tc_p">Gamme</p>
-            <button id="tc_b" nz-button nzType="default">ajouter</button>
+    <div class="main_container" *ngIf="!disp_add_modal">
+        <div class="lst_container">
+            <div class="gamme_lst" *ngFor="let gamme of gamme_service.gammes">
+                <app-gamme-list-item [gamme]="gamme"></app-gamme-list-item>
+            </div>
+        </div>
+        <div class="sub_btn">
+            <button id="tc_b" nz-button nzType="default" (click)="ajouterGamme()">ajouter</button>
         </div>
     </div>
-    <p>gamme works!</p>
+    <div class="main_container" *ngIf="disp_add_modal">
+        <app-add-gamme-list-item></app-add-gamme-list-item>
+    </div>
 </body>

@@ -19,8 +19,8 @@ export class HeaderTemplateComponent implements OnInit {
 
   /* Clem */
   menuAdmin: menuItem[] = []
+  menuWorkshop: menuItem[] = [{path: '/realisation', label: 'Realisation'}, {path: '/atelier', label: 'Atelier'}, {path: '/gamme', label: 'Gamme'}]
   menuCommerce: menuItem[] = [{path: '/dashboard', label: 'dashboard'}, {path: '/pwet', label: 'pwet'}]
-  menuWorkshop: menuItem[] = [{path: '/dashboard', label: 'dashboard'}, {path: '/pwet', label: 'pwet'}]
 
   @Input()
   pg_grp: String = '';
@@ -36,8 +36,12 @@ export class HeaderTemplateComponent implements OnInit {
   }
 
   determineMenu(): menuItem[] {
-    if (this.user?.role?.id == 3) {
+    if (this.user?.role?.id == 3) { //admin
       return this.menuAdmin;
+    }else if(this.user?.role?.id == 4) {  //atelier
+      return this.menuWorkshop;
+    }else if(this.user?.role?.id == 5) {  //commerciaux
+      return this.menuCommerce;
     }
     return this.menuWorkshop;
   }

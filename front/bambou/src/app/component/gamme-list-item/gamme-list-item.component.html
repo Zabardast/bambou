@@ -1,0 +1,54 @@
+<div class="full_cmp">
+    <div class="gamme_cmponent">
+        <div class="info_strip" >
+            <p>{{gamme.name}}</p>
+            <p>{{service_operation.operations.length}}</p>
+            <p>time estimat for all op</p>
+        </div>
+        <div class="action_strip">
+            <button nz-button class="details_btn" nzType="default" (click)="details(gamme.id)">
+                <div *ngIf="!visible_operation">details</div>
+                <div *ngIf="visible_operation">minimiser</div> 
+                <span class="material-icons">visibility</span>
+            </button>
+            <a nz-dropdown [nzDropdownMenu]="menu">
+                <span class="material-icons more_btn" >more_horiz</span>
+            </a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu nzSelectable>
+                    <li nz-menu-item>
+                        <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
+                        nzPopoverPlacement="topRight" nzPopoverTrigger="click">
+                            <span class="material-icons more_btn" >mode</span>
+                        </a>
+                    </li>
+                    <li nz-menu-item>
+                        <a (click)="deleteGamme(gamme.id)">
+                            <span class="material-icons more_btn" >person_remove</span>
+                        </a>
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </div>
+    </div>
+    <div *ngIf="visible_operation">
+        <div class="operation_item under_line">
+            <p>name</p>
+            <p>poste de travail</p>
+            <p>machine</p>
+            <p>temps</p>
+        </div>
+        <div class="Gamme_items" *ngFor="let operation of service_operation.operations">
+            <div class="operation_item">
+                <p>{{operation.name}}</p>
+                <p>{{operation.poste_de_travail.name}}</p>
+                <p>{{operation.machine.nom}}</p>
+                <p>{{operation.prod_time}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #editpopover>
+    <input nz-input placeholder="username" [(ngModel)]="gamme.name" />
+    <button class="user_edit" (click)="updateGamme(gamme)"> modifier </button>
+</ng-template>

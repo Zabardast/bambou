@@ -1,23 +1,25 @@
-.top_container {
+.main_container {
+    margin: 30px 10%;
+}
+
+.lst_container {
     display: flex;
     justify-content: center;
-    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
-.tc {
-    width: 80%;
-    align-items: center;
+.gamme_lst{
+    width: 100%;
+}
+
+.sub_btn{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #000000;
-}
-
-#tc_p{
-    font-size: 24px;
-    margin-bottom: 0%;
+    justify-content: flex-end;
 }
 
 #tc_b{
     background-color: #FCD60E;
     border-radius: 5px;
+    justify-self: flex-end;
 }
