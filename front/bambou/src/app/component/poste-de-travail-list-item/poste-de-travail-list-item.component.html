@@ -1,28 +1,38 @@
-<div class="mch">
-    <div class="tem">
-        <p>{{poste_det_travail.name}}</p>
-        <div class="action_strip">
-            <button nz-button class="details_btn" nzType="default" (click)="details(poste_det_travail.id)">
-                details <span class="material-icons">visibility</span>
-            </button>
-            <a nz-dropdown [nzDropdownMenu]="menu">
-                <span class="material-icons more_btn" >more_horiz</span>
-            </a>
-            <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu nzSelectable>
-                    <li nz-menu-item>
-                        <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
-                        nzPopoverPlacement="topRight" nzPopoverTrigger="click">
-                            <span class="material-icons more_btn" >mode</span>
-                        </a>
-                    </li>
-                    <li nz-menu-item>
-                        <a (click)="delete_poste_de_travail(poste_det_travail.id)">
-                            <span class="material-icons more_btn" >person_remove</span>
-                        </a>
-                    </li>
-                </ul>
-            </nz-dropdown-menu>
+<div class="full_mch">
+    <div class="mch">
+        <div class="tem">
+            <p>{{poste_det_travail.name}}</p>
+            <p>user count :{{poste_det_travail.users.length}}</p>
+            <p> machine count :{{poste_det_travail.machines.length}}</p>
+            <div class="action_strip">
+                <button nz-button class="details_btn" nzType="default" (click)="details(poste_det_travail.id)">
+                    details <span class="material-icons">visibility</span>
+                </button>
+                <a nz-dropdown [nzDropdownMenu]="menu">
+                    <span class="material-icons more_btn" >more_horiz</span>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                    <ul nz-menu nzSelectable>
+                        <li nz-menu-item>
+                            <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
+                            nzPopoverPlacement="topRight" nzPopoverTrigger="click">
+                                <span class="material-icons more_btn" >mode</span>
+                            </a>
+                        </li>
+                        <li nz-menu-item>
+                            <a (click)="delete_poste_de_travail(poste_det_travail.id)">
+                                <span class="material-icons more_btn" >person_remove</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nz-dropdown-menu>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="v_details">
+        <div class="mach_item"  *ngFor="let mach of poste_det_travail.machines" >
+          <p>{{mach.nom}}</p>
+          <p>more info</p>
         </div>
     </div>
 </div>

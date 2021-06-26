@@ -13,10 +13,13 @@ export class PosteDeTravailListItemComponent implements OnInit {
   poste_det_travail: poste_de_travail_Model = new poste_de_travail_Model();
 
   visible: boolean = false;
+  v_details: boolean = false;
+
 
   constructor(public readonly poste_de_travail_service: PosteDeTravailsService) { }
 
   ngOnInit(): void {
+    // this.poste_de_travail_service.read_poste_de_travails();
   }
 
   update_poste_de_travail(poste_de_travail :poste_de_travail_Model) {
@@ -29,7 +32,7 @@ export class PosteDeTravailListItemComponent implements OnInit {
   }
 
   details(id :number) :void {
-    
+    this.v_details = this.v_details ? false : true;
   }
 
 }

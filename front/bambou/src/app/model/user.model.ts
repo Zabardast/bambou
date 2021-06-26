@@ -13,6 +13,7 @@ export class UserModel {
     password = '';
     email = '';
     image = '';
+    checked: boolean = false;
     role!: RoleModel;
     poste_de_travails :poste_de_travail_Model[] = [];
   }

@@ -19,7 +19,10 @@ export class HeaderTemplateComponent implements OnInit {
 
   /* Clem */
   menuAdmin: menuItem[] = []
-  menuWorkshop: menuItem[] = [{path: '/realisation', label: 'Realisation'}, {path: '/atelier', label: 'Atelier'}, {path: '/gamme', label: 'Gamme'}]
+  menuWorkshop: menuItem[] = [{path: '/realisation', label: 'Realisation'},
+                              {path: '/poste-de-travail', label: 'Poste-de-travail'},
+                              {path: '/machine', label: 'Machine'},
+                              {path: '/gamme', label: 'Gamme'}]
   menuCommerce: menuItem[] = [{path: '/dashboard', label: 'dashboard'}, {path: '/pwet', label: 'pwet'}]
 
   @Input()

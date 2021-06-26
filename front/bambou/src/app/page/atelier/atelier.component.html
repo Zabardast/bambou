@@ -1,41 +1,41 @@
 <app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
 <main>
-    <div class="poste_de_travail">
+    <div class="poste_de_travail" *ngIf="!visible_pdt">
         <div class="top_container">
             <div class="tc">
                 <p id="tc_p">Poste de travail</p>
-                <button id="tc_b" *ngIf="!visible_pdt" nz-button nzType="default" (click)="open_add_poste_de_travail()">ajouter</button>
-                <button nz-button *ngIf="visible_pdt"class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button>
+                <button id="tc_b" nz-button nzType="default" (click)="open_add_poste_de_travail()">ajouter</button>
+                <!-- <button nz-button *ngIf="visible_pdt"class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button> -->
             </div>
         </div>    
-    </div>
-    <div class="addcontainerparent" *ngIf="visible_pdt">
-        <div class="addcontainer">
-            <input class="addinput" nz-input placeholder="nom poste de travail" [(ngModel)]="poste_de_travail.name" />
-            <!-- <button nz-button class="addUserBtn" nzType="default" (click)="add_poste_de_travail()">save</button> -->
+        <div *ngFor="let poste_de_travail of poste_de_travail_service.poste_de_travails">
+            <app-poste-de-travail-list-item [poste_det_travail]="poste_de_travail"></app-poste-de-travail-list-item>
         </div>
     </div>
-    <div *ngFor="let poste_de_travail of poste_de_travail_service.poste_de_travails">
-        <app-poste-de-travail-list-item [poste_det_travail]="poste_de_travail"></app-poste-de-travail-list-item>
-    </div>
-    <div class="machine">
-        <div class="top_container">
-            <div class="tc">
-                <p id="tc_p">machine</p>
-                <button id="tc_b" *ngIf="!visible_machine" nz-button nzType="default" (click)="open_add_machine()">ajouter</button>
+    <div class="add_pdt" *ngIf="visible_pdt">
+        <div class="name_cmp">
+            <p>nom :</p>
+            <input nz-input class="pdt_name" placeholder="nom poste de travail" [(ngModel)]="poste_de_travail.name"/>
+        </div>
+        <div id="cont_lst">
+            <div class="cont_bloc">
+                <h3>machine</h3>
+                <div class="cont_multi" *ngFor="let machine of machine_service.machines">
+                    <app-machine-list-item [machine]="machine"></app-machine-list-item>
+                    <label nz-checkbox [(ngModel)]="machine.checked"></label>
+                </div>
             </div>
-        </div> 
-    </div>
-    <div class="addcontainerparent" *ngIf="visible_machine">
-        <div class="addcontainer">
-            <input class="addinput" nz-input placeholder="nom machine" [(ngModel)]="machine.nom" />
-            <button nz-button class="addUserBtn" nzType="default" (click)="add_machine()">save</button>
+            <div class="cont_bloc">
+                <h3>utilisateur califie</h3>
+                <div class="cont_multi" *ngFor="let user of user_service.users">
+                    <app-usr-list-item [user]="user"></app-usr-list-item>
+                    <label nz-checkbox [(ngModel)]="user.checked"></label>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="machine_mod">
-        <div [ngClass]="visible_pdt ? 'machine_lst' : ''" class="const_machine_lst"  *ngFor="let machine of machine_service.machines">
-            <app-machine-list-item [machine]="machine"></app-machine-list-item>
-            <label *ngIf="visible_pdt" nz-checkbox [(ngModel)]="machine.checked"></label>
+        <div class="submit_cont">
+            <button id="tc_b" nz-button nzType="default" (click)="quit()">annuler</button>
+            <button id="tc_b" nz-button nzType="default" (click)="add_poste_de_travail()">enregistrer</button>
         </div>
     </div>
 <main>

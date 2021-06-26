@@ -1,9 +1,15 @@
 
+.full_mch {
+    /* margin-top: 15px; */
+    margin-top: 15px;
+    background-color: #999898;
+    border-radius: 10px;
+}
+
 .mch {
     display: flex;
     justify-content: center;
     margin-bottom: 0%;
-    padding-top: 15px;
 }
 
 .tem {
@@ -34,4 +40,10 @@
 
 .user_edit {
     align-self: flex-end;
+}
+
+.mach_item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 5%;
 }

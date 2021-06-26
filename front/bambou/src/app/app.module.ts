@@ -19,6 +19,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 import { AuthInterceptor } from 'src/app/auth.interceptor';
 import { ListItemComponent } from './component/list-item/list-item.component';
 import { HeaderTemplateComponent } from './component/header-template/header-template.component';
@@ -30,6 +31,8 @@ import { MachineListItemComponent } from './component/machine-list-item/machine-
 import { PosteDeTravailListItemComponent } from './component/poste-de-travail-list-item/poste-de-travail-list-item.component';
 import { GammeListItemComponent } from './component/gamme-list-item/gamme-list-item.component';
 import { AddGammeListItemComponent } from './component/add-gamme-list-item/add-gamme-list-item.component';
+import { MachineComponent } from './page/machine/machine.component';
+import { UsrListItemComponent } from './component/usr-list-item/usr-list-item.component';
 
 registerLocaleData(en);
 
@@ -46,7 +49,9 @@ registerLocaleData(en);
     MachineListItemComponent,
     PosteDeTravailListItemComponent,
     GammeListItemComponent,
-    AddGammeListItemComponent
+    AddGammeListItemComponent,
+    MachineComponent,
+    UsrListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -60,9 +65,10 @@ registerLocaleData(en);
     NzDropDownModule,
     NzPopoverModule,
     NzCheckboxModule,
-    NzTimePickerModule
+    NzTimePickerModule,
+    NzModalModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

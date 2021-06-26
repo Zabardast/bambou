@@ -1,5 +1,61 @@
 <app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
-<body>
+<main>
+    <div id="top">
+        <button class="btn" nz-button>Precedent</button>
+        <button class="btn" nz-button>Sauvegarder</button>
+    </div>
+    <div id="main">
+        <div id="Details_cont">
+            <h2>Details</h2>
+            <!-- new gamme -->
+            <div>
+                <div  class="bizone">
+                    <p>Nom</p>
+                    <input nz-input class="dropdown_resp" placeholder="nom de gamme" [(ngModel)]="gamme.name"/>
+                </div>
+                <div  class="bizone">
+                    <p>responsable</p>
+                    <select class="dropdown_resp" name="responsable">
+                        <option *ngFor="let res of user_service.users" value="{{res}}">{{res.username}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <h2>Nouvelle operation</h2>
+            <!-- new operation -->
+            <div class="ajout_operation">
+                <div class="box_container">
+                    <p>Nom</p>
+                    <input nz-input placeholder="decoupe" [(ngModel)]="operation.name"/>
+                </div>
+                <div class="box_container">
+                    <p>Duree</p>
+                    <nz-time-picker class="loc_op_item" [(ngModel)]="operation.prod_time" nzFormat="HH:mm" nzSize="small"></nz-time-picker>
+                </div>
+                <div class="box_container">
+                    <p>Plan de travail</p>
+                    <select>
+                        <option *ngFor="let pdt of pdt_service.poste_de_travails" value="{{pdt}}">{{pdt.name}}</option>
+                    </select>
+                </div>
+                <div class="box_container">
+                    <p>Machine</p>
+                    <select>
+                        <option *ngFor="let machine of machine_service.machines" value="{{machine}}">{{machine.nom}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sub_btn">
+                <button class="btn" nz-button>Ajouter</button>
+            </div>
+        </div>
+        <div id="Operation_cont">
+            <h2>Operations</h2>
+            <div></div>
+        </div>
+    </div>
+</main>
+<!-- <body>
     <div class="main_container" *ngIf="!disp_add_modal">
         <div class="lst_container">
             <div class="gamme_lst" *ngFor="let gamme of gamme_service.gammes">
@@ -13,4 +69,4 @@
     <div class="main_container" *ngIf="disp_add_modal">
         <app-add-gamme-list-item [(disp_add_modal)]="disp_add_modal"></app-add-gamme-list-item>
     </div>
-</body>
+</body> -->

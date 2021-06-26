@@ -20,6 +20,7 @@
 #tc_b{
     background-color: #FCD60E;
     border-radius: 5px;
+    margin: 0px 5px;
 }
 
 .addcontainerparent {
@@ -71,4 +72,45 @@ app-machine-list-item {
     display: flex;
     justify-content: center;
     align-items: center
+}
+
+.name_cmp {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 0%;
+}
+
+.pdt_name {
+    width: 40%;
+    margin: 0px 15px;
+    padding: 0%;
+}
+
+#cont_lst {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.cont_bloc {
+    height: 500px;
+    /* background-color: brown; */
+    overflow-y: scroll;
+}
+
+.cont_multi {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-content: center;
+}
+
+.submit_cont { 
+    padding: 20px 0px;
+    display: flex;
+    justify-content: flex-end;
 }

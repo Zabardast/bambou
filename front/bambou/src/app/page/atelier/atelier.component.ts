@@ -16,10 +16,8 @@ export class AtelierComponent implements OnInit {
   grp: string="atelier";
 
   visible_pdt: boolean = false;
-  visible_machine: boolean = false;
 
   poste_de_travail: poste_de_travail_Model = new poste_de_travail_Model();
-  machine: MachineModel = new MachineModel();
 
   constructor(public readonly user_service: UserService,
               public readonly machine_service: MachineService,
@@ -27,12 +25,12 @@ export class AtelierComponent implements OnInit {
 
   ngOnInit(): void {
     this.user_service.getcurentUser();
+    this.user_service.getUsers();
     this.machine_service.readMachines();
     this.poste_de_travail_service.read_poste_de_travails();
   }
 
   open_add_poste_de_travail(): void {
-    if(this.visible_machine == true) this.visible_machine = false;
     this.visible_pdt = true;
   }
 
@@ -48,23 +46,24 @@ export class AtelierComponent implements OnInit {
         machine.checked = false;
       }      
     });
+    this.user_service.users.forEach(usr=>{
+      if(usr.checked) {
+        this.poste_de_travail.users.push(usr);
+        usr.checked = false;
+      }
+    });
     this.poste_de_travail_service.creat_poste_de_travail(this.poste_de_travail);
     this.visible_pdt = false; 
   }
 
-  open_add_machine(): void {
-    if(this.visible_pdt == true) this.visible_pdt = false;
-    this.visible_machine = true;
+  quit () :void {
+    this.visible_pdt = false;
+    this.user_service.users.forEach(usr=>{
+      usr.checked = false;
+    });
+    this.machine_service.machines.forEach(machine=>{
+      machine.checked = false;
+    });
+    this.poste_de_travail.name = "";
   }
-
-  add_machine(): void {
-    if(this.machine.nom == '') {
-      this.visible_machine = false; //to remove
-      //display error
-      return;
-    }
-    this.machine_service.creatMachine(this.machine);
-    this.visible_machine = false;
-  }
-
 }

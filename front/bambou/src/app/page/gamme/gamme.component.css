@@ -1,10 +1,85 @@
-.main_container {
+main {
     margin: 30px 10%;
 }
 
-.lst_container {
+#top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#Details_cont{
+
+}
+
+#Operation_cont{
+    border-left-style: solid;
+}
+
+h2 {
+    text-align: center;
+    padding: 5% 0%;
+}
+
+.btn {
+    background-color: #FCD60E;
+    border-radius: 5px;
+    margin: 0px 5px;
+}
+
+.bizone {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin: 5px 5px;
+}
+
+.dropdown_resp {
+    width: 90%;
+}
+
+.ajout_operation {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.box_container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: 15px 5px;
+}
+
+input, select, nz-time-picker, p{
+    margin: 0px 5px;
+    margin-bottom: 7%;
+}
+
+.sub_btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 5px;
+    padding-right: 8%;
+}
+
+
+
+
+
+
+
+
+
+
+/*  */
+.lst_container {
+    /* display: flex; */
+    /* justify-content: center; */
+    
     padding-bottom: 12px;
 }
 
@@ -12,11 +87,6 @@
     width: 100%;
 }
 
-.sub_btn{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
 
 #tc_b{
     background-color: #FCD60E;
