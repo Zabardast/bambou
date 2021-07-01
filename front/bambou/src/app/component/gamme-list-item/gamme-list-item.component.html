@@ -40,8 +40,8 @@
         <div class="Gamme_items" *ngFor="let operation of gamme.operations">
             <div class="operation_item">
                 <p>{{operation.name}}</p>
-                <p>{{service_operation.operations[operation.poste_de_travail].poste_de_travail.name}}</p>
-                <p>{{service_operation.operations[operation.poste_de_travail].machine.nom}}</p>
+                <p>{{full_operation(operation).poste_de_travail.name}}</p>
+                <p>{{full_operation(operation).machine.nom}}</p>
                 <p>{{operation.production_time}} minute</p>
             </div>
         </div>

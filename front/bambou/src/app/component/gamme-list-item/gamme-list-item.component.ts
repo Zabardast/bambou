@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { GammeModel } from 'src/app/model/gamme.model';
 import { UserModel } from 'src/app/model/user.model';
+import { ODM_to_OM, OperationModel, Operation_detail_Model } from 'src/app/model/operation.model';
 import { GammeService } from 'src/app/service/gamme.service';
 import { OperationsService } from 'src/app/service/operations.service';
 
@@ -38,6 +39,10 @@ export class GammeListItemComponent implements OnInit {
   details(id: number): void {
     this.gamme.operations
     this.visible_operation = this.visible_operation ? false : true;
+  }
+
+  full_operation(op: Operation_detail_Model): OperationModel {
+    return ODM_to_OM(op, this.service_operation);
   }
 
 }
