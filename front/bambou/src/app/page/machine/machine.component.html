@@ -1,0 +1,23 @@
+<app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
+<div class="machine">
+    <div class="top_container">
+        <div class="tc">
+            <p id="tc_p">machine</p>
+            <div class="addcontainerparent" *ngIf="visible_machine">
+                <div class="addcontainer">
+                    <input class="addinput" nz-input placeholder="nom machine" [(ngModel)]="machine.nom" />
+                    <button nz-button id="tc_b" nzType="default" (click)="add_machine()">save</button>
+                </div>
+            </div>
+            <button id="tc_b" *ngIf="!visible_machine" nz-button nzType="default" (click)="open_add_machine()">ajouter</button>
+        </div>
+    </div> 
+    <div class="machine_mod">
+        <div class="const_machine_lst"  *ngFor="let machine of machine_service.machines">
+            <app-machine-list-item [machine]="machine"></app-machine-list-item>
+            <!-- <label *ngIf="visible_pdt" nz-checkbox [(ngModel)]="machine.checked"></label> -->
+        </div>
+    </div>
+</div>
+
+<!-- [ngClass]="visible_pdt ? 'machine_lst' : ''" -->

@@ -5,6 +5,7 @@ import { poste_de_travail_Model } from 'src/app/model/poste-de-travail.model';
 import { MachineService } from 'src/app/service/machine.service';
 import { PosteDeTravailsService } from 'src/app/service/poste-de-travails.service';
 import { UserService } from 'src/app/service/user.service';
+import { MachineComponent } from '../machine/machine.component';
 
 @Component({
   selector: 'app-atelier',
@@ -42,9 +43,9 @@ export class AtelierComponent implements OnInit {
     }
     this.machine_service.machines.forEach(machine => {
       if(machine.checked) {
-        this.poste_de_travail.machines.push(machine);
+        this.poste_de_travail.machines.push((machine));
         machine.checked = false;
-      }      
+      }
     });
     this.user_service.users.forEach(usr=>{
       if(usr.checked) {

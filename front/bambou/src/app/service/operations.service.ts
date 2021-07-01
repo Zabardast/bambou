@@ -19,10 +19,11 @@ export class OperationsService {
     });
   }
 
-  readOperation(id: number) {
-    this.http.get<OperationModel>(`${environment.baseUrl}/operations/${id}`).subscribe((res)=>{
-      this.operation = res;
-    })
+  readOperation(id: number):Promise<void> {
+    return  new Promise(async (resolve, reject) => {
+      this.operation =  await this.http.get<OperationModel>(`${environment.baseUrl}/operations/${id}`).toPromise()
+      resolve()
+    }) 
   }
 
   readOperations() {

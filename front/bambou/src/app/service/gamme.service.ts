@@ -14,7 +14,7 @@ export class GammeService {
   constructor(private readonly http: HttpClient) { }
 
   creatGamme(gamme: GammeModel) {
-    this.http.post(`${environment.baseUrl}/gammes`, gamme).subscribe((res)=>{
+    this.http.post(`${environment.baseUrl}/gammes`, gamme).subscribe(()=>{
       this.readGammes();
     });
   }
@@ -28,6 +28,7 @@ export class GammeService {
   readGammes() {
     this.http.get<GammeModel[]>(`${environment.baseUrl}/gammes`).subscribe((res)=>{
       this.gammes = res;
+      console.log("readgammes: ", res)
     });
   }
 

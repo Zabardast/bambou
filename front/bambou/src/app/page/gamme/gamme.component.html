@@ -1,72 +1,193 @@
+<!-- {{ operation | json }} -->
 <app-header-template [pg_grp]="grp" [user]="user_service.current_user"></app-header-template>
-<main>
+<main *ngIf="disp_add_modal && !disp_edit_modal">
     <div id="top">
-        <button class="btn" nz-button>Precedent</button>
-        <button class="btn" nz-button>Sauvegarder</button>
+        <button class="btn" nz-button (click)="quitedit()">Precedent</button>
+        <button class="btn" nz-button (click)="saveGamme()">Sauvegarder</button>
     </div>
     <div id="main">
         <div id="Details_cont">
             <h2>Details</h2>
             <!-- new gamme -->
-            <div>
-                <div  class="bizone">
-                    <p>Nom</p>
-                    <input nz-input class="dropdown_resp" placeholder="nom de gamme" [(ngModel)]="gamme.name"/>
+            <form nz-form (ngSubmit)="savePrimaryGammeInfo()" [formGroup]="formPGamme">
+                <div>
+                    <div  class="bizone">
+                        <p>Nom</p>
+                        <input nz-input class="dropdown_resp" placeholder="nom de gamme" formControlName="gammeName"/>
+                    </div>
+                    <div  class="bizone">
+                        <p>responsable</p>
+                        <select class="dropdown_resp" name="responsable" formControlName="gammeResponsable">
+                            <option *ngFor="let res of user_service.users" [ngValue]="res">{{res.username}}</option>
+                        </select>
+                    </div>
+                    <div class="sub_btn">
+                        <button type="submit" class="btn" nz-button>enregistrer</button>
+                    </div>
                 </div>
-                <div  class="bizone">
-                    <p>responsable</p>
-                    <select class="dropdown_resp" name="responsable">
-                        <option *ngFor="let res of user_service.users" value="{{res}}">{{res.username}}</option>
-                    </select>
-                </div>
-            </div>
+            </form>
             <br>
-            <h2>Nouvelle operation</h2>
+            <h2 *ngIf="!edit">Nouvelle operation</h2>
+            <h2 *ngIf="edit">Edit operation</h2>
             <!-- new operation -->
-            <div class="ajout_operation">
-                <div class="box_container">
-                    <p>Nom</p>
-                    <input nz-input placeholder="decoupe" [(ngModel)]="operation.name"/>
+            <form nz-form (ngSubmit)="addOperation()" [formGroup]="formOperation">
+                <div class="ajout_operation">
+                    <nz-form-item>
+                        <nz-form-label nzFor="operationName" nzRequired>Nom</nz-form-label>
+                        <nz-form-control nzErrorTip="Faut mettre un nom chef !">
+                            <input nz-input placeholder="decoupe" formControlName="operationName" id="operationName"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <div class="box_container">
+                        <p>Duree</p>
+                        <nz-time-picker [nzDefaultOpenValue]="operation.time" class="loc_op_item" nzFormat='h:mm a' nzSize="small" formControlName="operationDuration"></nz-time-picker>
+                    </div>
+                    <div class="box_container">
+                        <p>Plan de travail</p>
+                        <select name="poste_de_travail" formControlName="operationPdt">
+                            <option *ngFor="let pdt of pdt_service.poste_de_travails" [ngValue]="pdt">{{pdt.name}}</option>
+                        </select>
+                    </div>
+                    <div class="box_container">
+                        <p>Machine</p>
+                        <select name="machine" formControlName="operationMachine">
+                            <option *ngFor="let machine of machine_service.machines" [ngValue]="machine">{{machine.nom}}</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="box_container">
-                    <p>Duree</p>
-                    <nz-time-picker class="loc_op_item" [(ngModel)]="operation.prod_time" nzFormat="HH:mm" nzSize="small"></nz-time-picker>
+                <div class="sub_btn">
+                    <button *ngIf="!edit" type="submit" class="btn" nz-button>Ajouter</button>
+                    <button *ngIf="edit" type="submit" class="btn" nz-button>Changer</button>
                 </div>
-                <div class="box_container">
-                    <p>Plan de travail</p>
-                    <select>
-                        <option *ngFor="let pdt of pdt_service.poste_de_travails" value="{{pdt}}">{{pdt.name}}</option>
-                    </select>
-                </div>
-                <div class="box_container">
-                    <p>Machine</p>
-                    <select>
-                        <option *ngFor="let machine of machine_service.machines" value="{{machine}}">{{machine.nom}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="sub_btn">
-                <button class="btn" nz-button>Ajouter</button>
-            </div>
+            </form>
         </div>
         <div id="Operation_cont">
             <h2>Operations</h2>
-            <div></div>
+            <div>
+                <div *ngFor="let op of gamme.operations">
+                    <app-operation-list-item [operation]="op" [edit]="edit" (editChange)='changeop(op)' (operationRemove)='removeop(op.id)' ></app-operation-list-item>
+                </div>
+                <div class="btn2_cont">
+                    <button nz-button class="btn2" (click)="showOperationsSelector()">
+                        <span class="material-icons more_btn" >add</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </main>
-<!-- <body>
-    <div class="main_container" *ngIf="!disp_add_modal">
-        <div class="lst_container">
-            <div class="gamme_lst" *ngFor="let gamme of gamme_service.gammes">
-                <app-gamme-list-item [gamme]="gamme"></app-gamme-list-item>
+<main *ngIf="!disp_add_modal && !disp_edit_modal">
+    <div class="tc">
+        <p id="tc_p">gamme</p>
+        <button nz-button nzType="default" class="btn" (click)="addGamme()">ajouter</button>
+    </div>
+    <div>
+        <div *ngFor="let gam of gamme_service.gammes">
+            <app-gamme-list-item [gamme]="gam" (gammeChange)='updateGamme(gam)'></app-gamme-list-item>
+        </div>
+    </div>
+</main>
+<main *ngIf="!disp_add_modal && disp_edit_modal">
+    <div class="tc">
+        <button nz-button nzType="default" class="btn" (click)="quitedit()">Quitter</button>
+        <p id="tc_p">gamme</p>
+        <button nz-button nzType="default" class="btn" (click)="saveNewInfo()">mettre a jour</button>
+    </div>
+    <div id="main">
+<!-- name and owner -->
+        <div id="Details_cont">
+            <h2>Details</h2>
+                       <!-- new gamme -->
+            <form nz-form (ngSubmit)="savePrimaryGammeInfo()" [formGroup]="formPGamme">
+                <div>
+                    <div  class="bizone">
+                        <p>Nom</p>
+                        <input nz-input class="dropdown_resp" placeholder="{{gamme.name}}" formControlName="gammeName" [(ngModel)]="gamme.name"/>
+                    </div>
+                    <div  class="bizone">
+                        <p>responsable</p>
+                        <select class="dropdown_resp" name="responsable" formControlName="gammeResponsable" [(ngModel)]="gamme.responsable">
+                            <option *ngFor="let res of user_service.users" [ngValue]="res" >{{res.username}}</option>
+                        </select>
+                    </div>
+                    <div class="sub_btn">
+                        <button type="submit" class="btn" nz-button>enregistrer</button>
+                    </div>
+                </div>
+            </form>
+            <!-- new operation -->
+            <h2 *ngIf="!edit">Nouvelle operation</h2>
+            <h2 *ngIf="edit">Edit operation</h2>
+            <form nz-form (ngSubmit)="addOperation()" [formGroup]="formOperation">
+                <div class="ajout_operation">
+                    <nz-form-item>
+                        <nz-form-label nzFor="operationName" nzRequired>Nom</nz-form-label>
+                        <nz-form-control nzErrorTip="Faut mettre un nom chef !">
+                            <input nz-input placeholder="decoupe" formControlName="operationName" id="operationName"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <div class="box_container">
+                        <p>Duree</p>
+                        <nz-time-picker [nzDefaultOpenValue]="operation.time" class="loc_op_item" nzFormat='h:mm a' nzSize="small" formControlName="operationDuration"></nz-time-picker>
+                    </div>
+                    <div class="box_container">
+                        <p>Plan de travail</p>
+                        <select name="poste_de_travail" formControlName="operationPdt" [(ngModel)]="operation.poste_de_travail">
+                            <option *ngFor="let pdt of pdt_service.poste_de_travails" [ngValue]="pdt">{{pdt.name}}</option>
+                        </select>
+                    </div>
+                    <div class="box_container">
+                        <p>Machine</p>
+                        <select name="machine" formControlName="operationMachine" [(ngModel)]="operation.machine">
+                            <option *ngFor="let machine of machine_service.machines" [ngValue]="machine">{{machine.nom}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sub_btn">
+                    <button *ngIf="!edit" type="submit" class="btn" nz-button>Ajouter</button>
+                    <button *ngIf="edit" type="submit" class="btn" nz-button>Changer</button>
+                </div>
+            </form>
+        </div>
+<!-- operation list -->
+        <div>
+            <div *ngFor="let op of gamme.operations">
+                <app-operation-list-item [operation]="op" [edit]="edit" (editChange)='changeop(op)' (operationRemove)='removeop(op.id)' ></app-operation-list-item>
+            </div>
+            <div class="btn2_cont">
+                <button nz-button class="btn2" (click)="showOperationsSelector()">
+                    <span class="material-icons more_btn" >add</span>
+                </button>
             </div>
         </div>
-        <div class="sub_btn">
-            <button id="tc_b" nz-button nzType="default" (click)="ajouterGamme()">ajouter</button>
+    </div>
+</main>
+<!-- add operation -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="SOSCancel()">
+    <!-- <ng-container *nzModalContent> -->
+        <div *nzModalContent class="op_mod">
+            <div class="op_side_mod">
+                <p>nom: </p>
+                <p>poste_de_travail: </p>
+                <P>machine: </P>
+            </div>
+            <button *ngFor="let op of operation_service.operations" (click)="SelectRealOperation(op.id)" class="op_side_mod">
+                <p>{{op.name}}</p>
+                <p>{{op.poste_de_travail}}</p>
+                <P>{{op.machine}}</P>
+            </button>
         </div>
+        <div *nzModalFooter>
+            <button nz-button class="btn" (click)="SOSCancel()" >Quitter</button>
+        </div>
+    <!-- </ng-container> -->
+</nz-modal>
+<!-- edit operation -->
+<!-- <nz-modal [(nzVisible)]="edit" (nzOnCancel)="SOSCancel()">
+    <div *nzModalContent>      
+          <p>time to edit</p>
     </div>
-    <div class="main_container" *ngIf="disp_add_modal">
-        <app-add-gamme-list-item [(disp_add_modal)]="disp_add_modal"></app-add-gamme-list-item>
+    <div *nzModalFooter>
+        <button nz-button class="btn" (click)="SOSCancel()" >Quitter</button>
     </div>
-</body> -->
+</nz-modal> -->

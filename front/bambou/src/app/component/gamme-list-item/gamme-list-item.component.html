@@ -1,7 +1,7 @@
 <div class="full_cmp">
     <div class="gamme_cmponent">
         <div class="info_strip" >
-            <p>{{gamme.name}}</p>
+            <p>nom:{{gamme.name}}</p>
             <p>{{service_operation.operations.length}}</p>
             <p>time estimat for all op</p>
         </div>
@@ -17,14 +17,13 @@
             <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu nzSelectable>
                     <li nz-menu-item>
-                        <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
-                        nzPopoverPlacement="topRight" nzPopoverTrigger="click">
+                        <a (click)="updateGamme(gamme)">
                             <span class="material-icons more_btn" >mode</span>
                         </a>
                     </li>
                     <li nz-menu-item>
                         <a (click)="deleteGamme(gamme.id)">
-                            <span class="material-icons more_btn" >person_remove</span>
+                            <span class="material-icons more_btn" >delete</span>
                         </a>
                     </li>
                 </ul>
@@ -33,17 +32,17 @@
     </div>
     <div *ngIf="visible_operation">
         <div class="operation_item under_line">
-            <p>name</p>
+            <p>nom</p>
             <p>poste de travail</p>
             <p>machine</p>
             <p>temps</p>
         </div>
-        <div class="Gamme_items" *ngFor="let operation of service_operation.operations">
+        <div class="Gamme_items" *ngFor="let operation of gamme.operations">
             <div class="operation_item">
                 <p>{{operation.name}}</p>
-                <p>{{operation.poste_de_travail.name}}</p>
-                <p>{{operation.machine.nom}}</p>
-                <p>{{operation.prod_time}}</p>
+                <p>{{service_operation.operations[operation.poste_de_travail].poste_de_travail.name}}</p>
+                <p>{{service_operation.operations[operation.poste_de_travail].machine.nom}}</p>
+                <p>{{operation.production_time}} minute</p>
             </div>
         </div>
     </div>

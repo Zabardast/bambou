@@ -31,6 +31,18 @@ h2 {
     margin: 0px 5px;
 }
 
+.btn2_cont {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.btn2 {
+    width: 90%;
+    background-color: #C4C4C4;
+    border-radius: 5px;
+}
+
 .bizone {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -66,30 +78,28 @@ input, select, nz-time-picker, p{
     padding-right: 8%;
 }
 
-
-
-
-
-
-
-
-
-
-/*  */
-.lst_container {
-    /* display: flex; */
-    /* justify-content: center; */
-    
-    padding-bottom: 12px;
-}
-
-.gamme_lst{
+.tc {
     width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
 }
 
+#tc_p{
+    font-size: 24px;
+    margin-bottom: 0%;
+}
 
-#tc_b{
-    background-color: #FCD60E;
-    border-radius: 5px;
-    justify-self: flex-end;
+.op_mod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.op_side_mod {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    width: 100%;
+    text-align: center;
 }

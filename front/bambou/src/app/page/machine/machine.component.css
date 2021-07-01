@@ -1,0 +1,59 @@
+.top_container {
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+}
+
+.machine_mod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.machine {
+    padding: 30px 10%;
+}
+
+.machine_lst{
+    display: grid;
+    grid-template-columns: 95% 5%;
+}
+
+.const_machine_lst {
+    width: 100%;
+}
+
+.tc {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+}
+
+.addinput {
+    margin: 0px 5px;
+    
+}
+
+#tc_p{
+    font-size: 24px;
+    margin-bottom: 0%;
+}
+
+#tc_b{
+    background-color: #FCD60E;
+    border-radius: 5px;
+}
+
+.addcontainerparent {
+    display: flex;
+    justify-content: center;
+}
+
+.addcontainer {
+    width: 100%;
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GammeModel } from 'src/app/model/gamme.model';
-import { OperationModel } from 'src/app/model/operation.model';
+import { OperationModel, OM_to_ODM } from 'src/app/model/operation.model';
 import { GammeService } from 'src/app/service/gamme.service';
 import { MachineService } from 'src/app/service/machine.service';
 import { OperationsService } from 'src/app/service/operations.service';
@@ -39,7 +39,7 @@ export class AddGammeListItemComponent implements OnInit {
   add_op(): void {
     let operation: OperationModel = new OperationModel();
     operation.name = this.op_name;
-    operation.prod_time = this.op_time;
+    operation.time = this.op_time;
     //add protection to avoid multi machine or pdt selection
 
     //add machine
@@ -65,7 +65,7 @@ export class AddGammeListItemComponent implements OnInit {
     this.gamme.name = this.name;
     this.service_operation.operations.forEach(op => {
       if (op.checked) {
-        this.gamme.operations.push(op);
+        this.gamme.operations.push(OM_to_ODM(op));
       }
     });
     this.service_gamme.creatGamme(this.gamme);

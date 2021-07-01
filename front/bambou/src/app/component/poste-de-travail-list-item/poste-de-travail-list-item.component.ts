@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { poste_de_travail_Model } from 'src/app/model/poste-de-travail.model';
+import { poste_de_travail_details_Model, poste_de_travail_Model } from 'src/app/model/poste-de-travail.model';
 import { PosteDeTravailsService } from 'src/app/service/poste-de-travails.service';
 
 @Component({

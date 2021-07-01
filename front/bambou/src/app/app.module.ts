@@ -8,7 +8,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US, fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import fr from '@angular/common/locales/fr';
@@ -20,6 +20,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { AuthInterceptor } from 'src/app/auth.interceptor';
 import { ListItemComponent } from './component/list-item/list-item.component';
 import { HeaderTemplateComponent } from './component/header-template/header-template.component';
@@ -33,6 +34,7 @@ import { GammeListItemComponent } from './component/gamme-list-item/gamme-list-i
 import { AddGammeListItemComponent } from './component/add-gamme-list-item/add-gamme-list-item.component';
 import { MachineComponent } from './page/machine/machine.component';
 import { UsrListItemComponent } from './component/usr-list-item/usr-list-item.component';
+import { OperationListItemComponent } from './component/operation-list-item/operation-list-item.component';
 
 registerLocaleData(en);
 
@@ -51,12 +53,14 @@ registerLocaleData(en);
     GammeListItemComponent,
     AddGammeListItemComponent,
     MachineComponent,
-    UsrListItemComponent
+    UsrListItemComponent,
+    OperationListItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzFormModule,
@@ -66,7 +70,8 @@ registerLocaleData(en);
     NzPopoverModule,
     NzCheckboxModule,
     NzTimePickerModule,
-    NzModalModule
+    NzModalModule,
+    NzMessageModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

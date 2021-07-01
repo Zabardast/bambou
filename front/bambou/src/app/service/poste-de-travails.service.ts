@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { poste_de_travail_Model } from '../model/poste-de-travail.model';
+import { poste_de_travail_details_Model, poste_de_travail_Model } from '../model/poste-de-travail.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

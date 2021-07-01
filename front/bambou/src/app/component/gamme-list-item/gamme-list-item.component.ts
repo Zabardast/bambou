@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { GammeModel } from 'src/app/model/gamme.model';
 import { UserModel } from 'src/app/model/user.model';
 import { GammeService } from 'src/app/service/gamme.service';
@@ -13,6 +13,8 @@ export class GammeListItemComponent implements OnInit {
 
   @Input()
   gamme :GammeModel = new GammeModel();
+  @Output()
+  gammeChange = new EventEmitter<GammeModel>(); 
 
   visible: boolean = false;
   visible_operation: boolean = false;
@@ -21,6 +23,7 @@ export class GammeListItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.service_operation.readOperations();
+    console.log("GammeListItemComponent: ",this.gamme)
   }
 
   deleteGamme(id: number): void {
@@ -28,10 +31,12 @@ export class GammeListItemComponent implements OnInit {
   }
 
   updateGamme(p_gamme: GammeModel): void {
-    this.service_gamme.updateGamme(p_gamme);
+    this.gammeChange.emit(p_gamme);
+    // this.service_gamme.updateGamme(p_gamme);
   }
 
   details(id: number): void {
+    this.gamme.operations
     this.visible_operation = this.visible_operation ? false : true;
   }
 
