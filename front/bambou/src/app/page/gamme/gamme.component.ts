@@ -139,7 +139,7 @@ export class GammeComponent implements OnInit {
   }
 
   addOperation(): void {
-    // console.log("logman:", this.operation.poste_de_travail.name)
+    console.log("add operation")
     for (const i in this.formOperation.controls) {
       this.formOperation.controls[i].markAsDirty();
       this.formOperation.controls[i].updateValueAndValidity();
@@ -156,13 +156,14 @@ export class GammeComponent implements OnInit {
     this.operation.poste_de_travail = this.formOperation.controls.operationPdt.value;
     this.operation.machine = this.formOperation.controls.operationMachine.value;
 
-    this.operation_service.creatOperation(this.operation);
-
-    this.removeop(this.operation.id)
-
+    this.operation_service.creatOperation(this.operation).then( res => {
+      console.log("res value: ", res);
+      this.gamme.operations.push(res);
+      this.gamme_service.updateGamme(this.gamme);
+    });
+    
 
     // cant add operation to list if i dont have the id
-    // this.gamme.operations.push();
 
     // console.log("operations:", this.gamme.operations)
   }
@@ -197,6 +198,7 @@ export class GammeComponent implements OnInit {
   }
 
   saveNewInfo(): void {
+    this.gamme.piece = 0; // bugfix
     this.gamme_service.updateGamme(this.gamme);
     this.disp_edit_modal = false;
   }

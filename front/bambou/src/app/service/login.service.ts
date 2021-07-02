@@ -22,9 +22,7 @@ export class LoginService {
   login(email :string, password :string) {
     let API_URL = `${environment.baseUrl}/auth/local`;
     let data = {identifier:email, password:password};
-    console.log('data:', data);
     this.http.post(API_URL, data).subscribe((res: any)=>{
-      console.log("yo:",res)
       this.jwt = res.jwt;
       this.cacheJwtToken();
       this.user = res.user;
@@ -35,7 +33,7 @@ export class LoginService {
           this.router.navigate(['/admin'])
           break;
         case "atelier":
-          this.router.navigate(['/atelier'])
+          this.router.navigate(['/gamme'])
           break;
         default:
           break;

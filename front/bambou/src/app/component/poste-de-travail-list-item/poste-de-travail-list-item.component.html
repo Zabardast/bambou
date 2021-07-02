@@ -5,9 +5,9 @@
             <p>user count :{{poste_det_travail.users.length}}</p>
             <p> machine count :{{poste_det_travail.machines.length}}</p>
             <div class="action_strip">
-                <button nz-button class="details_btn" nzType="default" (click)="details(poste_det_travail.id)">
+                <!-- <button nz-button class="details_btn" nzType="default" (click)="details(poste_det_travail.id)">
                     details <span class="material-icons">visibility</span>
-                </button>
+                </button> -->
                 <a nz-dropdown [nzDropdownMenu]="menu">
                     <span class="material-icons more_btn" >more_horiz</span>
                 </a>
@@ -21,7 +21,7 @@
                         </li>
                         <li nz-menu-item>
                             <a (click)="delete_poste_de_travail(poste_det_travail.id)">
-                                <span class="material-icons more_btn" >person_remove</span>
+                                <span class="material-icons more_btn" >delete</span>
                             </a>
                         </li>
                     </ul>

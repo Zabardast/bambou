@@ -1,32 +1,38 @@
-<div class="list_item_container">
-    <div class="list_item">
-        <p class="p_item">nom: {{operation.name}}</p>
-        <p class="p_item">temps de prod: {{operation.production_time}}</p>
-        <div class="action_strip">
-            <button nz-button class="details_btn" nzType="default" (click)="details(operation.id)">
-                details <span class="material-icons">visibility</span>
-            </button>
-            <a nz-dropdown [nzDropdownMenu]="menu">
-                <span class="material-icons more_btn" >more_horiz</span>
-            </a>
-            <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu nzSelectable>
-                    <li nz-menu-item>
-                        <!-- <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
-                        nzPopoverPlacement="topRight" nzPopoverTrigger="click">
-                            <span class="material-icons more_btn" >mode</span>
-                        </a> -->
-                        <a (click)="editOperation(operation)">
-                            <span class="material-icons more_btn" >mode</span>
-                        </a>
-                    </li>
-                    <li nz-menu-item>
-                        <a (click)="deleteOperation(operation.id)">
-                            <span class="material-icons more_btn" >remove</span>
-                        </a>
-                    </li>
-                </ul>
-            </nz-dropdown-menu>
+<div class="details_background">
+    <div class="list_item_container">
+            <p class="p_item">nom: {{operation.name}}</p>
+            <p class="p_item">temps de prod: {{operation.production_time}}</p>
+            <div class="action_strip">
+                <button nz-button class="details_btn" nzType="default" (click)="details()">
+                    details <span class="material-icons">visibility</span>
+                </button>
+                <a nz-dropdown [nzDropdownMenu]="menu">
+                    <span class="material-icons more_btn" >more_horiz</span>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                    <ul nz-menu nzSelectable>
+                        <li nz-menu-item>
+                            <!-- <a nz-popover nzPopoverTitle="Title" [nzPopoverContent]="editpopover" [(nzPopoverVisible)]="visible"
+                            nzPopoverPlacement="topRight" nzPopoverTrigger="click">
+                                <span class="material-icons more_btn" >mode</span>
+                            </a> -->
+                            <a (click)="editOperation(operation)">
+                                <span class="material-icons more_btn" >mode</span>
+                            </a>
+                        </li>
+                        <li nz-menu-item>
+                            <a (click)="deleteOperation(operation.id)">
+                                <span class="material-icons more_btn" >remove</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nz-dropdown-menu>
+            </div>
+    </div>
+    <div *ngIf="visible_details">
+        <div class="InfoLine">
+            <p>poste de travail:{{operation_reel.poste_de_travail.name}}</p>
+            <p>machine:{{operation_reel.machine.nom}}</p>
         </div>
     </div>
 </div>

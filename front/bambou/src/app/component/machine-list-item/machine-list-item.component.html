@@ -2,9 +2,9 @@
     <div class="tem">
         <p>{{machine.nom}}</p>
         <div class="action_strip">
-            <button nz-button class="details_btn" nzType="default" (click)="details(machine.id)">
+            <!-- <button nz-button class="details_btn" nzType="default" (click)="details(machine.id)">
                 details <span class="material-icons">visibility</span>
-            </button>
+            </button> -->
             <a nz-dropdown [nzDropdownMenu]="menu">
                 <span class="material-icons more_btn" >more_horiz</span>
             </a>
@@ -18,7 +18,7 @@
                     </li>
                     <li nz-menu-item>
                         <a (click)="deleteMachine(machine.id)">
-                            <span class="material-icons more_btn" >person_remove</span>
+                            <span class="material-icons more_btn" >delete</span>
                         </a>
                     </li>
                 </ul>

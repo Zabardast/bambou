@@ -30,7 +30,8 @@
             <h2 *ngIf="!edit">Nouvelle operation</h2>
             <h2 *ngIf="edit">Edit operation</h2>
             <!-- new operation -->
-            <form nz-form (ngSubmit)="addOperation()" [formGroup]="formOperation">
+            <form *ngIf="!edit" nz-form (ngSubmit)="addOperation()" [formGroup]="formOperation">
+            <!-- <form *ngIf="edit" nz-form (ngSubmit)="addOperation()" [formGroup]="formOperation"> -->
                 <div class="ajout_operation">
                     <nz-form-item>
                         <nz-form-label nzFor="operationName" nzRequired>Nom</nz-form-label>
@@ -59,6 +60,7 @@
                     <button *ngIf="!edit" type="submit" class="btn" nz-button>Ajouter</button>
                     <button *ngIf="edit" type="submit" class="btn" nz-button>Changer</button>
                 </div>
+            <!-- </form> -->
             </form>
         </div>
         <div id="Operation_cont">
@@ -67,11 +69,9 @@
                 <div *ngFor="let op of gamme.operations">
                     <app-operation-list-item [operation]="op" [edit]="edit" (editChange)='changeop(op)' (operationRemove)='removeop(op.id)' ></app-operation-list-item>
                 </div>
-                <div class="btn2_cont">
-                    <button nz-button class="btn2" (click)="showOperationsSelector()">
-                        <span class="material-icons more_btn" >add</span>
-                    </button>
-                </div>
+                <button nz-button class="btn2" (click)="showOperationsSelector()">
+                    <span class="material-icons more_btn btn2" >add</span>
+                </button>
             </div>
         </div>
     </div>
@@ -154,11 +154,11 @@
             <div *ngFor="let op of gamme.operations">
                 <app-operation-list-item [operation]="op" [edit]="edit" (editChange)='changeop(op)' (operationRemove)='removeop(op.id)' ></app-operation-list-item>
             </div>
-            <div class="btn2_cont">
+            <!-- <div class="btn2_cont"> -->
                 <button nz-button class="btn2" (click)="showOperationsSelector()">
                     <span class="material-icons more_btn" >add</span>
                 </button>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </main>
@@ -173,8 +173,8 @@
             </div>
             <button *ngFor="let op of operation_service.operations" (click)="SelectRealOperation(op.id)" class="op_side_mod">
                 <p>{{op.name}}</p>
-                <p>{{op.poste_de_travail}}</p>
-                <P>{{op.machine}}</P>
+                <p>{{op.poste_de_travail.name}}</p>
+                <P>{{op.machine.nom}}</P>
             </button>
         </div>
         <div *nzModalFooter>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OperationModel } from '../model/operation.model';
+import { OperationModel, Operation_detail_Model } from '../model/operation.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,10 +13,11 @@ export class OperationsService {
 
   constructor(private readonly http: HttpClient) { }
 
-  creatOperation(operation: OperationModel) {
-    this.http.post(`${environment.baseUrl}/operations`, operation).subscribe((res)=>{
+  creatOperation(operation: OperationModel):Promise<Operation_detail_Model> {
+    return new Promise(async (resolve, reject)=>{
+      await this.http.post(`${environment.baseUrl}/operations`, operation).toPromise()
       this.readOperations();
-    });
+    })
   }
 
   readOperation(id: number):Promise<void> {

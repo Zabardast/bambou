@@ -38,7 +38,7 @@ h2 {
 }
 
 .btn2 {
-    width: 90%;
+    width: 100%;
     background-color: #C4C4C4;
     border-radius: 5px;
 }
@@ -84,6 +84,7 @@ input, select, nz-time-picker, p{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #000000;
+    margin-bottom: 25px;
 }
 
 #tc_p{

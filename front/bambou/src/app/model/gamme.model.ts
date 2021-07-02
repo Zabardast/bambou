@@ -6,6 +6,6 @@ export class GammeModel {
     id = 0;
     name = '';
     operations: Operation_detail_Model[] = [];
-    piece: PieceModel = new PieceModel();
+    piece: number = 0;//new PieceModel();
     responsable: UserModel = new UserModel();
 }

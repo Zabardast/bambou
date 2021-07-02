@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { OperationModel, Operation_detail_Model } from 'src/app/model/operation.model';
+import { OperationsService } from 'src/app/service/operations.service';
 
 @Component({
   selector: 'app-operation-list-item',
@@ -19,22 +20,20 @@ export class OperationListItemComponent implements OnInit {
 
   @Output()
   editChange = new EventEmitter<Operation_detail_Model>();
-
-  // @Input()
-  // op_id :number = 0;
-
-  // @Output()
-  // op_idChange = new EventEmitter<number>();
-
+  
+  visible_details: boolean = false;
   visible :boolean = true;
 
-  constructor() { }
+  operation_reel :OperationModel = new OperationModel()
+
+  constructor(public readonly operation_service :OperationsService) { }
 
   ngOnInit(): void {
   }
 
-  details(id: number): void {
-
+  details(): void {
+    this.operation_reel = this.operation_service.operations[this.operation_service.operations.findIndex((res)=>{return res.id === this.operation.id})];
+    this.visible_details = (this.visible_details)? false : true;
   }
 
   deleteOperation(id: number) {
